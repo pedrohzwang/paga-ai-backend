@@ -1,15 +1,14 @@
-FROM node:lts-alpine
+FROM node:20-alpine
 
-WORKDIR /usr/src/api
+WORKDIR /app
 
 COPY package.json ./
+COPY package-lock.json ./
 
-RUN npm install --production
+RUN npm install
 
 COPY . .
 COPY ./.env.prod ./.env
-
-RUN npm run build
 
 ENV NODE_ENV=production
 ENV PORT=3100
