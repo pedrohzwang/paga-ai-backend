@@ -14,8 +14,8 @@ export class BillEntity {
   @Column({ nullable: false, length: 255 })
   description: string;
 
-  @Column({ nullable: false, precision: 14 })
-  value: string;
+  @Column({ nullable: false, precision: 2 })
+  value: number;
 
   @Column({ nullable: false, default: new Date() })
   dueDate: Date;
