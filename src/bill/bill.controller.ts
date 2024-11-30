@@ -11,21 +11,22 @@ import {
   Query
 } from '@nestjs/common';
 import { BillService } from './bill.service';
+import { BillEntity } from './entities/bill.entity';
 
 @Controller('api/bill')
 export class BillController {
   constructor(private readonly service: BillService) {}
 
   @Get()
-  listAll(@Query() pagination: any): Array<string> {
+  async listAll(@Query() pagination: any): Promise<Array<BillEntity>> {
     const { limit = 10, offset = 0 } = pagination;
     console.log(`Limit: ${limit}, Offset: ${offset}`);
-    return this.service.listAll();
+    return await this.service.listAll();
   }
 
   @Get(':id')
-  listOne(@Param('id') id: string) {
-    return this.service.listOne(id);
+  async listOne(@Param('id') id: string) {
+    return await this.service.listOne(id);
   }
 
   @HttpCode(HttpStatus.CREATED)

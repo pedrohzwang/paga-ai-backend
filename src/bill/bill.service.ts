@@ -9,8 +9,8 @@ export class BillService {
     private billRepository: Repository<BillEntity>
   ) {}
 
-  listAll(): Array<string> {
-    return ['bill1', 'bill2'];
+  async listAll(): Promise<Array<BillEntity>> {
+    return await this.billRepository.find();
   }
 
   listOne(id: string): string {

@@ -1,6 +1,12 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryColumn,
+  UpdateDateColumn
+} from 'typeorm';
 
-@Entity()
+@Entity({ name: 'bill' })
 export class BillEntity {
   @PrimaryColumn({ type: 'uuid' })
   id: string;
@@ -8,7 +14,7 @@ export class BillEntity {
   @Column({ nullable: false, length: 255 })
   description: string;
 
-  @Column({ nullable: false, precision: 2 })
+  @Column({ nullable: false, precision: 14 })
   value: string;
 
   @Column({ nullable: false, default: new Date() })
@@ -19,4 +25,10 @@ export class BillEntity {
 
   @Column({ nullable: false, default: true })
   active: boolean;
+
+  @CreateDateColumn()
+  createdAt?: Date;
+
+  @UpdateDateColumn()
+  updatedAt?: Date;
 }
