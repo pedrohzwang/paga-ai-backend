@@ -1,7 +1,14 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { Repository } from 'typeorm';
+import { BillEntity } from './entities/bill.entity';
 
 @Injectable()
 export class BillService {
+  constructor(
+    @Inject('BILL_REPOSITORY')
+    private billRepository: Repository<BillEntity>
+  ) {}
+
   listAll(): Array<string> {
     return ['bill1', 'bill2'];
   }
