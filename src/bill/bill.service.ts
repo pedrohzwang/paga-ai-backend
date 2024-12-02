@@ -13,9 +13,8 @@ export class BillService {
     return await this.billRepository.find();
   }
 
-  async listOne(id: string): Promise<any> {
-    // return await this.billRepository.findOne({ where: { id } });
-    return new Promise((resolve) => null);
+  async listOne(id: string): Promise<BillEntity> {
+    return await this.billRepository.findOne({ where: { id } });
   }
 
   delete(id: string): void {

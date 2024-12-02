@@ -3,7 +3,7 @@ export class BillDTO {
 
   description: string;
 
-  value: string;
+  value: number;
 
   dueDate: Date;
 

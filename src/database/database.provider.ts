@@ -12,7 +12,7 @@ export const databaseProviders = [
         password: 'root',
         database: 'paga_ai',
         entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: process.env.NODE_ENV === 'development'
+        synchronize: true
       });
 
       return dataSource.initialize();
