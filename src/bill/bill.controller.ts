@@ -21,32 +21,28 @@ export class BillController {
   async listAll(@Query() pagination: any): Promise<Array<BillEntity>> {
     const { limit = 10, offset = 0 } = pagination;
     console.log(`Limit: ${limit}, Offset: ${offset}`);
-    return await this.service.listAll();
+    return await this.service.findAll();
   }
 
   @Get(':id')
   async listOne(@Param('id') id: string) {
-    return await this.service.listOne(id);
+    return await this.service.findOne(id);
   }
 
   @HttpCode(HttpStatus.CREATED)
   @Post()
-  create(@Body() body: any) {
-    return body;
+  async create(@Body() body: BillEntity) {
+    return await this.service.create(body);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() body: any) {
-    return {
-      id,
-      ...body
-    };
+  async update(@Param('id') id: string, @Body() body: BillEntity) {
+    await this.service.update(id, body);
   }
 
   @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
-  delete(@Param('id') id: string) {
-    this.service.delete(id);
-    return;
+  async setInactive(@Param('id') id: string) {
+    await this.service.setInactive(id);
   }
 }
