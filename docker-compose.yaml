@@ -1,0 +1,11 @@
+services:
+  mysql:
+    image: 'mysql:8.0.40'
+    container_name: paga-ai-db
+    environment:
+      - 'MYSQL_DATABASE=paga-ai'
+      - 'MYSQL_PASSWORD=admin'
+      - 'MYSQL_ROOT_PASSWORD=root'
+      - 'MYSQL_USER=app'
+    ports:
+      - '3306'
