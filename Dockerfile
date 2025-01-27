@@ -5,4 +5,4 @@ WORKDIR /app
 COPY target/*.jar /app/paga-ai.jar
 EXPOSE 8080
 
-CMD ["java", "-jar", "/app/paga-ai.jar"]
+CMD ["java", "-Dspring.profiles.active=prod", "-jar", "/app/paga-ai.jar"]
