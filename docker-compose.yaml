@@ -1,11 +1,14 @@
 services:
   mysql:
     container_name: paga-ai-db
-    image: 'mysql:8.0.40'
+    image: 'postgres:17.3-alpine3.21'
     environment:
-      - 'MYSQL_DATABASE=paga_ai'
-      - 'MYSQL_PASSWORD=admin'
-      - 'MYSQL_ROOT_PASSWORD=root'
-      - 'MYSQL_USER=app'
+      - 'POSTGRES_DB=paga_ai'
+      - 'POSTGRES_PASSWORD=admin'
+      - 'POSTGRES_USER=admin'
     ports:
-      - '3306:3306'
+      - '5432:5432'
+    volumes:
+      - ~/git/docker:/var/lib/postgresql/data
+
+

@@ -1,4 +1,4 @@
-package com.zwg.paga_ai.controller;
+package com.zwg.paga_ai.infrastructure.rest.controllers;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
