@@ -5,21 +5,23 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "expense_occurrence")
-public class ExpenseOccurrence {
+public class ExpenseOccurrenceEntity {
 
     @Id
     private UUID id;
 
     @Column(name = "expense_id", nullable = false)
-    @OneToOne(orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
     private ExpenseEntity expense;
 
     @Column(name = "due_date", nullable = false, columnDefinition = "DATE")

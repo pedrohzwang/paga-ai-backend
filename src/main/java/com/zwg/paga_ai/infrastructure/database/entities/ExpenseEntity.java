@@ -8,9 +8,9 @@ import lombok.Data;
 
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name = "expense")
-@Data
 public class ExpenseEntity {
 
 
