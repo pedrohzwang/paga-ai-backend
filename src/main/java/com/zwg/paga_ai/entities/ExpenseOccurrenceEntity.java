@@ -1,11 +1,11 @@
-package com.zwg.paga_ai.infrastructure.database.entities;
+package com.zwg.paga_ai.entities;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,8 +20,8 @@ public class ExpenseOccurrenceEntity {
     @Id
     private UUID id;
 
-    @Column(name = "expense_id", nullable = false)
-    @OneToMany(orphanRemoval = true, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "expense_id", nullable = false)
     private ExpenseEntity expense;
 
     @Column(name = "due_date", nullable = false, columnDefinition = "DATE")

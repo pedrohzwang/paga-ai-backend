@@ -1,11 +1,16 @@
-package com.zwg.paga_ai.infrastructure.database.entities;
+package com.zwg.paga_ai.entities;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -28,4 +33,7 @@ public class ExpenseEntity {
 
     @Column(name = "is_recurring", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isRecurring = false;
+
+    @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<ExpenseOccurrenceEntity> occurrences = new ArrayList<>();
 }
