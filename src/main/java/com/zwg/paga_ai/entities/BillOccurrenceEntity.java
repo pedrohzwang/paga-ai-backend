@@ -14,15 +14,15 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "expense_occurrence")
-public class ExpenseOccurrenceEntity {
+@Table(name = "bill_occurrence")
+public class BillOccurrenceEntity {
 
     @Id
     private UUID id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "expense_id", nullable = false)
-    private ExpenseEntity expense;
+    @JoinColumn(name = "bill_id", nullable = false)
+    private BillEntity bill;
 
     @Column(name = "due_date", nullable = false, columnDefinition = "DATE")
     private LocalDate dueDate;

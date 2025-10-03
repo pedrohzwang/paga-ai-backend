@@ -15,9 +15,8 @@ import java.util.UUID;
 
 @Data
 @Entity
-@Table(name = "expense")
-public class ExpenseEntity {
-
+@Table(name = "bill")
+public class BillEntity {
 
     @Id
     private UUID id;
@@ -34,6 +33,6 @@ public class ExpenseEntity {
     @Column(name = "is_recurring", nullable = false, columnDefinition = "BOOLEAN")
     private boolean isRecurring = false;
 
-    @OneToMany(mappedBy = "expense", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<ExpenseOccurrenceEntity> occurrences = new ArrayList<>();
+    @OneToMany(mappedBy = "bill", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<BillOccurrenceEntity> occurrences = new ArrayList<>();
 }
