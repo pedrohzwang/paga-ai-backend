@@ -1,0 +1,7 @@
+package com.zwg.paga_ai.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BillService {
+}
